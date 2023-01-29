@@ -1,0 +1,84 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+
+i {
+  font-size: 50px;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+input {
+  width: 80%;
+}
+
+button {
+  background-color: rgb(230, 215, 237);
+  border: none;
+  border-bottom: 2px solid rgb(230, 215, 237);
+  width: 80px;
+  transition: all 150ms ease-in-out;
+}
+
+button:hover {
+  border-bottom: 2px solid rgb(173, 116, 226);
+}
+
+span {
+  margin-left: 10px;
+}
+
+span:hover {
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.min {
+  margin-right: 10px;
+}
+
+.con {
+  margin-top: 40px;
+}
+
+.con,
+.application,
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search {
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-btn {
+  background-color: white;
+  border: none;
+}
+
+.search-btn:hover {
+  background-color: rgb(224, 224, 224);
+  border: none;
+}
+
+.right {
+  text-align: center;
+}
+
+.application {
+  background-color: rgb(230, 215, 237);
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 100px;
+}
+
+.temp {
+  display: flex;
+}
