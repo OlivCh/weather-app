@@ -60,7 +60,14 @@ changeButton.addEventListener("click", changeTemp);
 // weather changing section
 function showTemp(position) {
   let temp = document.querySelector("#temperature");
+  let min = document.querySelector("#min");
+  let max = document.querySelector("#max");
+  let humidity = document.querySelector("#humidity");
   temp.innerHTML = Math.round(position.data.main.temp) + "°C";
+  min.innerHTML = `Min ${Math.round(position.data.main.temp_min)}°C`;
+  max.innerHTML = `Max ${Math.round(position.data.main.temp_max)}°C`;
+  humidity.innerHTML = `Humidity ${Math.round(position.data.main.humidity)}%`;
+  console.log(position.data.main);
 }
 
 function handlePosition(position) {
