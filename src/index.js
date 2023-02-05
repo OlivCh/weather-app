@@ -47,13 +47,14 @@ function changeTemp() {
   let temp = document.querySelector("#temperature");
   if (changeButton.innerHTML === "| °F") {
     changeButton.innerHTML = "| °C";
-    temp.innerHTML = `${temp * (9 / 5) + 32}°F`;
+    temp.innerHTML = `${celsiusTemp * (9 / 5) + 32}°F`;
   } else {
     changeButton.innerHTML = "| °F";
     temp.innerHTML = "25°C";
   }
 }
 
+let celsiusTemp = null;
 let changeButton = document.querySelector("span");
 changeButton.addEventListener("click", changeTemp);
 
@@ -77,6 +78,7 @@ function handlePosition(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(url).then(showTemp);
 }
+
 function getLocation() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
