@@ -30,7 +30,8 @@ let year = now.getFullYear();
 document.querySelector("#time").innerHTML = `${day}, ${time}`;
 document.querySelector("#date").innerHTML = `${date} ${month}, ${year}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -55,12 +56,18 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "b95f179627c8dd37f41e1be6e3250e19";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showResult() {
   let input = document.querySelector("#input");
   let cityName = document.querySelector("#city");
   cityName.innerHTML = input.value;
 
-  let apiKey = "210d99196a88b9257ed8cb3535a0a0c5";
+  let apiKey = "b95f179627c8dd37f41e1be6e3250e19";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=metric`;
   axios.get(url).then(showTemp);
 }
@@ -93,7 +100,8 @@ function showTemp(position) {
   min.innerHTML = `Min ${Math.round(position.data.main.temp_min)}°C`;
   max.innerHTML = `Max ${Math.round(position.data.main.temp_max)}°C`;
   humidity.innerHTML = `Humidity ${Math.round(position.data.main.humidity)}%`;
-  console.log(position.data.main);
+
+  getForecast(position.data.coord);
 }
 
 function handlePosition(position) {
@@ -110,5 +118,3 @@ function getLocation() {
 
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", getLocation);
-
-displayForecast();
