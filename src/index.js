@@ -30,6 +30,31 @@ let year = now.getFullYear();
 document.querySelector("#time").innerHTML = `${day}, ${time}`;
 document.querySelector("#date").innerHTML = `${date} ${month}, ${year}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+              <div class="weather-forecast-date">${day}</div>
+              <img
+                src="http://openweathermap.org/img/wn/50d@2x.png"
+                alt=""
+                width="70"
+              />
+              <div class="forecast-temp">
+                <span class="forecast-temp-max">30°C</span>
+                <span class="forecast-temp-min">10°C</span>
+              </div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showResult() {
   let input = document.querySelector("#input");
   let cityName = document.querySelector("#city");
@@ -85,3 +110,5 @@ function getLocation() {
 
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", getLocation);
+
+displayForecast();
