@@ -121,3 +121,8 @@ span:hover {
 .forecast-temp {
   font-size: 12px;
 }
+
+span:hover {
+  color: red;
+  cursor: default;
+}
